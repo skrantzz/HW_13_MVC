@@ -20,16 +20,29 @@ $(function() {
     //     }
     //   );
     // });
-  
+    $('.item-button').on('click', function() {
+        console.log('click')
+        var devoured = $(this).data('devoured')
+        var id = $(this).data('id')
+        console.log(devoured)
+        console.log(id)
+
+        $.ajax(`/api/burgers/${id}`, {
+            type: 'PUT',
+            data: { devoured: 1}
+        })
+    })  
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
       var newBurger = {
-        name: $("#ca").val(),
+        burger_name: $("#ca").val(),
         devoured: $("[burger_name=devoured]:checked").val()
       };
   
+    //   do another ajax here, PUT not post, updating burger
+    // send devoured1 (new object)
       // Send the POST request.
       $.ajax("/api/burgers/", {
         type: "POST",
