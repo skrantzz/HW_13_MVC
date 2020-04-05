@@ -13,6 +13,6 @@ var connection;
       });
   }
   
-  connection.connection();
+  connection.connect();
   
   module.exports = connection;
